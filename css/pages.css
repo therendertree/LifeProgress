@@ -1,0 +1,262 @@
+/* ══════════════════════════════════════
+   pages.css — 各页面专属样式
+   ══════════════════════════════════════ */
+
+/* ── 计划进度条卡片 ── */
+.plan-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.plan-name {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.plan-meta {
+  font-size: 12px;
+  color: var(--text2);
+  margin-top: 3px;
+}
+
+.plan-pct {
+  font-family: 'DM Mono', monospace;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.progress-track {
+  height: 8px;
+  background: var(--bg3);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.plan-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 计划类型标签 */
+.tag-type {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(74, 180, 240, 0.12);
+  color: var(--info);
+  border: 1px solid rgba(74, 180, 240, 0.25);
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* 完成/进行中徽章 */
+.badge-done {
+  display: inline-block;
+  padding: 3px 10px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid var(--accent-dim2);
+}
+
+.badge-ongoing {
+  display: inline-block;
+  padding: 3px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text2);
+  border-radius: 99px;
+  font-size: 11px;
+  border: 1px solid var(--border);
+}
+
+/* ── 热力图 ── */
+.heatmap-wrap {
+  overflow-x: auto;
+  padding-bottom: 8px;
+  overflow: visible; 
+}
+
+.heatmap-grid {
+  display: flex;
+  gap: 3px;
+  overflow: visible;
+}
+
+.heatmap-col {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.heatmap-cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: var(--bg3);
+  transition: transform 0.1s;
+  cursor: default;
+  position: relative;
+}
+
+.heatmap-cell:hover {
+  transform: scale(1.3);
+  z-index: 50;
+}
+
+.heatmap-cell[data-v="1"] { background: rgba(200, 240, 74, 0.35); }
+.heatmap-cell[data-v="2"] { background: rgba(200, 240, 74, 0.65); }
+.heatmap-cell[data-v="3"] { background: #c8f04a; }
+
+.heatmap-months {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 6px;
+  overflow: visible;
+}
+
+.heatmap-month-label {
+  font-size: 10px;
+  color: var(--text3);
+  min-width: 15px;
+  font-family: 'DM Mono', monospace;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.heatmap-legend span {
+  font-size: 11px;
+  color: var(--text3);
+}
+
+/* ── 重要事件 ── */
+.event-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.countdown-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--accent);
+  min-width: 64px;
+  text-align: center;
+  line-height: 1;
+}
+
+.countdown-unit {
+  font-size: 11px;
+  color: var(--text3);
+  text-align: center;
+  margin-top: 2px;
+}
+
+.event-info {
+  flex: 1;
+}
+
+.event-name {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.event-desc {
+  font-size: 13px;
+  color: var(--text2);
+  margin-top: 3px;
+}
+
+.event-date {
+  font-size: 12px;
+  color: var(--text3);
+  margin-top: 6px;
+  font-family: 'DM Mono', monospace;
+}
+
+/* 已过期事件样式 */
+.event-passed .countdown-num {
+  color: var(--text3);
+}
+
+/* ── 归档时间轴 ── */
+.timeline {
+  padding-left: 20px;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  padding-bottom: 28px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -14px;
+  top: 8px;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+
+.timeline-item:last-child::before {
+  display: none;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -18px;
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  flex-shrink: 0;
+}
+
+.timeline-date {
+  font-size: 12px;
+  color: var(--text3);
+  font-family: 'DM Mono', monospace;
+  min-width: 90px;
+  padding-top: 4px;
+}
+
+.timeline-content {
+  flex: 1;
+}
+
+.timeline-name {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.timeline-desc {
+  font-size: 13px;
+  color: var(--text2);
+  margin-top: 3px;
+}

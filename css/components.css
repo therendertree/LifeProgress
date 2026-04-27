@@ -1,0 +1,243 @@
+/* ══════════════════════════════════════
+   components.css — 通用 UI 组件样式
+   ══════════════════════════════════════ */
+
+/* ── 通用卡片 ── */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 16px;
+}
+
+.card:hover {
+  border-color: var(--border2);
+}
+
+/* ── 按钮 ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: #0e0f11;
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.btn-accent:hover {
+  background: #d8ff50;
+  border-color: #d8ff50;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.btn-danger {
+  color: var(--danger);
+  border-color: rgba(240, 74, 74, 0.3);
+}
+
+.btn-danger:hover {
+  background: rgba(240, 74, 74, 0.08);
+}
+
+/* ── 表单 ── */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  font-size: 12px;
+  color: var(--text2);
+  margin-bottom: 6px;
+  display: block;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  transition: border-color 0.15s;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: var(--accent);
+}
+
+.form-input::placeholder {
+  color: var(--text3);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* ── 颜色选择器 ── */
+.color-picker-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.color-swatch {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.1s;
+}
+
+.color-swatch:hover {
+  transform: scale(1.15);
+}
+
+.color-swatch.selected {
+  border-color: #fff;
+}
+
+/* ── Modal ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  width: 440px;
+  max-width: 92vw;
+  animation: modal-in 0.2s ease;
+}
+
+@keyframes modal-in {
+  from { opacity: 0; transform: scale(0.95) translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 22px;
+}
+
+/* ── 打卡 Modal 专用 ── */
+.checkin-plan-name {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.checkin-info {
+  font-size: 13px;
+  color: var(--text2);
+  margin-bottom: 20px;
+}
+
+/* ── Tabs ── */
+.tabs {
+  display: flex;
+  gap: 2px;
+  background: var(--bg3);
+  border-radius: var(--radius);
+  padding: 3px;
+  width: fit-content;
+}
+
+.tab {
+  padding: 7px 16px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--text2);
+  transition: all 0.15s;
+}
+
+.tab.active {
+  background: var(--bg2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* ── Tooltip ── */
+.tooltip-wrap {
+  position: relative;
+  /* z-index: 50; */
+}
+
+.tooltip-wrap .tooltip {
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 11px;
+  color: var(--text2);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+
+.tooltip-wrap:hover .tooltip {
+  z-index: 50;
+  opacity: 1;
+}
